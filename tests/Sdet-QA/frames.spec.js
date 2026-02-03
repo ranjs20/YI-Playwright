@@ -8,5 +8,8 @@ test("Frames",async({page})=>{
     const frame1=await page.frame({url:'https://ui.vision/demo/webtest/frames/frame_1.html'})
     await frame1.fill("[name='mytext1']",'Person');
 
-    
+    //approach2
+    const box=await page.frameLocator(" frame[src='frame_2.html']").locator("[name='mytext2']")
+     await box.fill("Hello")
+
 })
