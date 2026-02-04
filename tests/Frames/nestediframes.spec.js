@@ -8,5 +8,7 @@ test("Nested iframes",async({page})=>{
 const childFlames =await frame3.childFrames()
 //await childFlames[0].locator("(//div[@class='uHMk6b fsHoPb'])[2]").check()
 await childFlames[0].getByRole('checkbox', { name: 'Web Testing' }).check();
+await childFlames[0].getByRole('presentation', {name: 'I am a human'}).check();
+
 
 })
