@@ -9,6 +9,7 @@ export const InventorySelectors = {
   addBtn: 'button:has-text("Add to Cart")',
   removeBtn: 'button:has-text("Remove")',
   badge: ".shopping_cart_badge",
+  cart: ".shopping_cart_link",
   sortDropdown: ".product_sort_container",
   productPrice: ".inventory_item_price",
   productName: ".inventory_item_name",
@@ -30,10 +31,10 @@ export const CheckoutSelectors = {
   errorMessage: '[data-test="error"]',
 };
 export const SidebarSelectors = {
-  menuBtn: '#react-burger-menu-btn',
-  closeBtn: '#react-burger-cross-btn',
-  logoutLink: '#logout_sidebar_link',
-  resetLink: '#reset_sidebar_link',
-  allItemsLink: '#inventory_sidebar_link',
-  aboutLink: '#about_sidebar_link'
+  menuBtn: "#react-burger-menu-btn",
+  closeBtn: "#react-burger-cross-btn",
+  logoutLink: "#logout_sidebar_link",
+  resetLink: "#reset_sidebar_link",
+  allItemsLink: "#inventory_sidebar_link",
+  aboutLink: "#about_sidebar_link",
 };

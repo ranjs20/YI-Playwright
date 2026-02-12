@@ -1,39 +1,43 @@
-import { BasePage } from "../base/basepage";
+import { expect } from "@playwright/test";
 import { InventorySelectors } from "../selectors/Selectors";
+import { InventoryData } from "../data/testData";
 
-export class InventoryPage extends BasePage {
-  async addItem() {
-    await this.page.locator(InventorySelectors.addBtn).first().click();
-  }
-  async removeItem() {
-    await this.page.locator(InventorySelectors.removeBtn).first().click();
-  }
-  async sortBy(sortOption) {
-    await this.page.selectOption(InventorySelectors.sortDropdown, sortOption);
-  }
-  async getFirstItemName() {
-    return await this.page
-      .locator(InventorySelectors.productName)
-      .first()
-      .innerText();
-  }
-  async getFirstItemPrice() {
-    return await this.page
-      .locator(InventorySelectors.productPrice)
-      .first()
-      .innerText();
-  }
-  async goToCart() {
-    await this.page.click(".shopping_cart_link");
-  }
-  //Get number from cart badge
-  async getCartCount() {
-    const badge = this.page.locator(InventorySelectors.badge);
+export async function validateAllSortingOptions(page) {
+  const scenarios = Object.values(InventoryData.sortOptions);
 
-    if (await badge.isVisible()) {
-      return await badge.textContent();
-    } else {
-      return 0;
-    }
+  for (const scenario of scenarios) {
+    await page.selectOption(InventorySelectors.sortDropdown, scenario.value);
+
+    const selector = scenario.expectedFirst.includes("$")
+      ? InventorySelectors.productPrice
+      : InventorySelectors.productName;
+
+    await expect(page.locator(selector).first()).toHaveText(
+      scenario.expectedFirst
+    );
   }
+}
+
+// ---------------- CART ACTIONS ----------------
+
+export async function addItem(page) {
+  await page.locator(InventorySelectors.addBtn).first().click();
+  await expect(page.locator(InventorySelectors.badge)).toHaveText("1");
+}
+
+export async function removeItem(page) {
+  await page.locator(InventorySelectors.removeBtn).first().click();
+  await expect(page.locator(InventorySelectors.badge)).not.toBeVisible();
+}
+
+export async function verifyBadgeCount(page, count) {
+  const badge = page.locator(InventorySelectors.badge);
+  if (count === "0" || count === 0) {
+    await expect(badge).not.toBeVisible();
+  } else {
+    await expect(badge).toHaveText(count.toString());
+  }
+}
+export async function goToCart(page) {
+  await page.locator(InventorySelectors.cart).click();
 }

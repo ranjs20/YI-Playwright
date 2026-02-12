@@ -1,9 +1,15 @@
-export class BasePage {
-  constructor(page) {
-    this.page = page;
-  }
+export async function gotoPage(page, path = "https://www.saucedemo.com") {
+  await page.goto(path);
+}
 
-  async gotoPage(path = " ") {
-    await this.page.goto(path);
-  }
+export async function fills(page, selector, value) {
+  await page.fill(selector, value);
+}
+
+export async function types(page, selector, value) {
+  await page.type(selector, value);
+}
+
+export async function click(page, selector) {
+  await page.click(selector);
 }

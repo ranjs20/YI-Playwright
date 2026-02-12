@@ -1,14 +1,3 @@
-export const LoginData = {
-  validUsers: [
-    "standard_user",
-    "problem_user",
-    "performance_glitch_user",
-    "error_user",
-    "visual_user",
-  ],
-  lockedoutuser: "locked_out_user",
-  password: "secret_sauce",
-};
 export const InventoryData = {
   pageTitle: "Products",
   sortOptions: {
@@ -26,4 +15,12 @@ export const CheckOutData = {
     postalCode: "977",
   },
   successMessage: "Thank you for your order!",
+};
+export const SidebarSelectors = {
+  menuBtn: "#react-burger-menu-btn",
+  closeBtn: "#react-burger-cross-btn",
+  logoutLink: "#logout_sidebar_link",
+  allItemsLink: "#inventory_sidebar_link",
+  aboutLink: "#about_sidebar_link",
+  resetLink: "#reset_sidebar_link",
 };
