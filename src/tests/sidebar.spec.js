@@ -3,15 +3,15 @@ import { LoginPage } from "../pages/loginPage";
 import { SidebarPage } from "../pages/sidebarPage";
 import { InventoryPage } from "../pages/inventoryPage";
 import { LoginData } from "../data/testData";
-import { LoginSelectors } from "../selectors/Selectors";
+import { InventorySelectors, LoginSelectors } from "../selectors/Selectors";
 
 test.describe("Sidebar Functionality", () => {
- let sidebarPage, inventoryPage, loginPage;
+  let sidebarPage, inventoryPage, loginPage;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     sidebarPage = new SidebarPage(page);
-     inventoryPage = new InventoryPage(page);
+    inventoryPage = new InventoryPage(page);
 
     // Each test starts fresh with a login
     await loginPage.gotoPage("");
@@ -27,7 +27,7 @@ test.describe("Sidebar Functionality", () => {
 
   test("Reset App", async ({ page }) => {
     await inventoryPage.addItem();
-    const badge = page.locator(".shopping_cart_badge");
+    const badge = page.locator(InventorySelectors.badge);
 
     // Verify item was added
     await expect(badge).toBeVisible();
