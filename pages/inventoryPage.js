@@ -1,7 +1,15 @@
 import { expect } from "@playwright/test";
-import { InventorySelectors } from "../selectors/Selectors";
-import { InventoryData } from "../data/testData";
+import { InventoryData } from "../utils/testData";
 
+export const InventorySelectors = {
+  addBtn: 'button:has-text("Add to Cart")',
+  removeBtn: 'button:has-text("Remove")',
+  badge: ".shopping_cart_badge",
+  cart: ".shopping_cart_link",
+  sortDropdown: ".product_sort_container",
+  productPrice: ".inventory_item_price",
+  productName: ".inventory_item_name",
+};
 export async function validateAllSortingOptions(page) {
   const scenarios = Object.values(InventoryData.sortOptions);
 

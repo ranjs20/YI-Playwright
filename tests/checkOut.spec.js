@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
-import * as loginPage from "../pages/loginPage";
+import { loginStandardUser } from "../pages/loginPage";
 import * as checkoutPage from "../pages/checkOutPage";
 
 test.describe("CheckOut Suite", () => {
   test.beforeEach(async ({ page }) => {
-    await loginPage.loginStandardUser(page);
+    await loginStandardUser(page);
   });
 
   test("Verify Successful Checkout Flow", async ({ page }) => {

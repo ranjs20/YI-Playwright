@@ -1,11 +1,16 @@
 import { expect } from "@playwright/test";
-import * as base from "../base/basepage";
-import { CartSelectors, InventorySelectors } from "../selectors/Selectors";
+import * as utils from "../utils/actionUtils";
 import * as inventoryPage from "./inventoryPage";
 
+export const CartSelectors = {
+  cartItem: ".cart_item",
+  checkoutBtn: "#checkout",
+  removeBtn: 'button:has-text("Remove")',
+  continueBtn: "#continue-shopping",
+};
 export async function addItemAndNavigate(page) {
   await inventoryPage.addItem(page);
-  await base.click(page, InventorySelectors.badge);
+  await utils.click(page, inventoryPage.InventorySelectors.badge);
 }
 
 export async function verifyNumberOfItems(page, count) {
@@ -14,15 +19,12 @@ export async function verifyNumberOfItems(page, count) {
 }
 
 export async function removeItem(page) {
-  await base.click(page, CartSelectors.removeBtn);
+  await utils.click(page, CartSelectors.removeBtn);
   await verifyNumberOfItems(page, 0);
 }
 
-/**
- * Proceeds to the checkout info page
- */
 export async function clickCheckout(page) {
-  await base.click(page, CartSelectors.checkoutBtn);
+  await utils.click(page, CartSelectors.checkoutBtn);
   await expect(page).toHaveURL(/checkout-step-one/);
 }
 
