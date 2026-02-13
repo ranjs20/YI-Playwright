@@ -53,11 +53,3 @@ export const CheckOutData = {
   },
   successMessage: "Thank you for your order!",
 };
-export const SidebarSelectors = {
-  menuBtn: "#react-burger-menu-btn",
-  closeBtn: "#react-burger-cross-btn",
-  logoutLink: "#logout_sidebar_link",
-  allItemsLink: "#inventory_sidebar_link",
-  aboutLink: "#about_sidebar_link",
-  resetLink: "#reset_sidebar_link",
-};
