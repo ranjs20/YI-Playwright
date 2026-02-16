@@ -26,16 +26,16 @@ Create a `.env` file in the project root and add following credentials (this fil
 BASE_URL=base_url
 SAUCE_PASSWORD=your_password
 ```
-
 ## 📁 Project Structure
 
-├── .github/workflows/
-├── tests/
-├── pages/
-├── utils/
-├── allure-results/
-├── playwright.config.js
-├── .gitignore
-├── package.json
+```text
+├── .github/workflows/    
+├── tests/                
+├── pages/               
+├── utils/                
+├── allure-results/       
+├── playwright.config.js  
+├── .gitignore            
+├── package.json          
 └── README.md
 
