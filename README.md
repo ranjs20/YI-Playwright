@@ -1,6 +1,6 @@
 # 🎭 Sauce Demo Playwright Automation 🎭
 
-This is a comprehensive E2E testing suite for [Sauce Demo](https://www.saucedemo.com/), built for speed and reliability using Playwright.
+This is a comprehensive E2E testing suite for [Sauce Demo](https://www.saucedemo.com/), built  using Playwright.
 
 ## 📜 Introduction
 

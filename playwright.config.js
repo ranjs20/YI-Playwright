@@ -1,6 +1,6 @@
 // @ts-check
-require("dotenv").config({ quiet: true });
-//require("dotenv").config();
+//require("dotenv").config({ quiet: true });
+require("dotenv").config();
 import { defineConfig, devices } from "@playwright/test";
 
 /**
