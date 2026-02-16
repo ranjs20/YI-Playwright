@@ -25,8 +25,9 @@ Create a `.env` file in the project root and add following credentials (this fil
 ```text
 BASE_URL=base_url
 SAUCE_PASSWORD=your_password
+```
 
-**📁 Project Structure**
+## 📁 Project Structure
 
 ├── .github/workflows/
 ├── tests/
@@ -37,4 +38,3 @@ SAUCE_PASSWORD=your_password
 ├── .gitignore
 ├── package.json
 └── README.md
-```
