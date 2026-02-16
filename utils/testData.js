@@ -6,7 +6,7 @@ export const LoginData = {
     "error_user",
     "visual_user",
   ],
-  password: "secret_sauce",
+  password: process.env.SAUCE_PASSWORD,
   invalidScenarios: [
     {
       user: "locked_out_user",

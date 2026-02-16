@@ -1,4 +1,4 @@
-export async function gotoPage(page, path = "/") {
+export async function gotoPage(page,path="/") {
   await page.goto(path);
 }
 
