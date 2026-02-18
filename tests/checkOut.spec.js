@@ -7,11 +7,16 @@ test.describe("CheckOut Suite", () => {
     await gotoInventoryPage(page);
   });
 
-  test("Verify Successful Checkout Flow", async ({ page }) => {
+  test("TC_CHECKOUT_01 : Verify Checkout step is passed when all required fields are filled.", async ({
+    page,
+  }) => {
     await checkoutPage.performSuccessfulCheckout(page);
   });
 
-  test.fail("Verify Empty Cart Block", async ({ page }) => {
-    await checkoutPage.verifyEmptyCartBlocked(page);
-  });
+  test.fail(
+    "TC_CHECKOUT_02 : Verify 'Checkout' button is disabled if the cart contains zero items.",
+    async ({ page }) => {
+      await checkoutPage.verifyEmptyCartBlocked(page);
+    }
+  );
 });

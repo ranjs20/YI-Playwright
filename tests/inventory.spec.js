@@ -6,11 +6,15 @@ test.describe("Inventory Page", () => {
   test.beforeEach(async ({ page }) => {
     await gotoInventoryPage(page);
   });
-  test("Add and Remove Item Flow", async ({ page }) => {
+  test("TC_INVENT_01 : Verify the Cart Badge reflects the selection when items are added or removed from the inventory.", async ({
+    page,
+  }) => {
     await inventoryPage.addItem(page);
     await inventoryPage.removeItem(page);
   });
-  test("Verify All Filtering Scenarios", async ({ page }) => {
+  test("TC_INVENT_02 :Verify Product List order updates correctly when each sorting filter is applied ", async ({
+    page,
+  }) => {
     await inventoryPage.validateAllSortingOptions(page);
   });
 });

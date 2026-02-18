@@ -7,11 +7,15 @@ test.describe("Sidebar & App State Suite", () => {
     await gotoInventoryPage(page);
   });
 
-  test("Verify Reset App State clears the cart", async ({ page }) => {
+  test("TC_SIDEBAR_01 : Verify Cart is cleared and the badge is removed when the 'Reset App State' option is selected from the sidebar.", async ({
+    page,
+  }) => {
     await sidebarPage.resetAppState(page);
   });
 
-  test("Verify User can Logout", async ({ page }) => {
+  test("TC_SIDEBAR_02 :Verify User is redirected to the Login page when the 'Logout' link is selected from the sidebar.", async ({
+    page,
+  }) => {
     await sidebarPage.logout(page);
   });
 });
