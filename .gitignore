@@ -8,7 +8,9 @@ node_modules/
 /playwright/.cache/
 .auth/
 .github/workflows
+.vscode/
 
 #For Allure files
+.reports/
 allure-results/
 allure-report/
