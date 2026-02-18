@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
-import { loginStandardUser } from "../pages/loginPage";
+import { gotoInventoryPage } from "../utils/actionUtils";
 import * as sidebarPage from "../pages/sidebarPage";
 
 test.describe("Sidebar & App State Suite", () => {
   test.beforeEach(async ({ page }) => {
-    await loginStandardUser(page);
+    await gotoInventoryPage(page);
   });
 
   test("Verify Reset App State clears the cart", async ({ page }) => {

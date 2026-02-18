@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
-import { loginStandardUser } from "../pages/loginPage";
 import * as cartPage from "../pages/cartPage";
+import { gotoInventoryPage } from "../utils/actionUtils";
 
 test.describe("Cart Functionality", () => {
   test.beforeEach(async ({ page }) => {
-    await loginStandardUser(page);
+    await gotoInventoryPage(page);
     await cartPage.addItemAndNavigate(page);
   });
 

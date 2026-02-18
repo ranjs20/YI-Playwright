@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
-import { loginStandardUser } from "../pages/loginPage";
+import { gotoInventoryPage } from "../utils/actionUtils";
 import * as inventoryPage from "../pages/inventoryPage";
 
 test.describe("Inventory Page", () => {
   test.beforeEach(async ({ page }) => {
-    await loginStandardUser(page);
+    await gotoInventoryPage(page);
   });
   test("Add and Remove Item Flow", async ({ page }) => {
     await inventoryPage.addItem(page);

@@ -1,19 +1,7 @@
-// @ts-check
-//require("dotenv").config({ quiet: true });
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
+//require("dotenv").config();
 import { defineConfig, devices } from "@playwright/test";
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
-
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
 export default defineConfig({
   testDir: "./tests",
   /* Run tests in files in parallel */
@@ -25,10 +13,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: [
-  //   ["line"], // Shows progress in terminal
-  //   ["allure-playwright", { outputFolder: "allure-results" }], // Saves data for the report
-  // ],
+  reporter: [
+    ["html"],
+    //   ["line"], // Shows progress in terminal
+    //   ["allure-playwright", { outputFolder: "allure-results" }], // Saves data for the report
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -43,8 +32,19 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: "setup",
+      testMatch: /.*\.setup\.js/,
+    },
+    {
       name: "chromium",
+      use: { ...devices["Desktop Chrome"], storageState: ".auth/login.json" },
+      dependencies: ["setup"],
+      testIgnore: "**/login.spec.js",
+    },
+    {
+      name: "login-gate",
       use: { ...devices["Desktop Chrome"] },
+      testMatch: "**/login.spec.js",
     },
 
     // {
@@ -77,11 +77,4 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
